@@ -31,12 +31,7 @@
 						<button class="btn btn-light btn-lg" type="submit">Predict Now</button>
 					</div>
 				</form>
-				{% if filename %}
-                  <div class="text-center mt-4">
-                    <h3>Uploaded Image:</h3>
-                    <img src="{{ url_for('static', filename='test/' + filename) }}" class="img-fluid" width="300">
-                  </div>
-                {% endif %}
+				
 				{% if prediction %}
 					<div class="text-center mt-4">
 						<h2>Prediction Result:</h2>
@@ -50,4 +45,3 @@
 	</div>
 	
 	<script src="{{ url_for('static', filename='main.js') }}" defer></script>
-				

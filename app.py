@@ -5,11 +5,13 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import load_model
+import tensorflow as tf
+print("TensorFlow version:", tf.__version__)
 import requests
-from flask import Flask, render_template, request, redirect, flash, send_from_directory, url_for
+from flask import Flask, render_template, request, redirect, flash, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_apscheduler import APScheduler
-from model import predict_leaf
+
 from data import disease_map, details_map
 
 # Download Model File
@@ -174,29 +176,4 @@ def api_predict():
             return diseases
     except:
         return {"Error": "Something Went Wrong!"}
-
-#sadeem
-@app.route('/predict', methods=['POST'])
-def prediction():
-    folder = './static/test'
-    
-    # Clear previous images
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
-        if os.path.isfile(file_path):
-            os.unlink(file_path)
-
-    # Save uploaded file
-    file = request.files['file']
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(folder, filename)
-    file.save(filepath)
-
-    # Predict
-    result = predict(folder)
-    prediction_label = list(result.values())[0]['prediction']
-
-    return render_template('index.html', filename=filename, prediction=prediction_label)
-print("Prediction:", prediction_label)
-
 
