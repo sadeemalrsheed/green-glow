@@ -5,8 +5,7 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import load_model
-import tensorflow as tf
-print("TensorFlow version:", tf.__version__)
+
 import requests
 from flask import Flask, render_template, request, redirect, flash, send_from_directory
 from werkzeug.utils import secure_filename
@@ -14,7 +13,6 @@ from flask_apscheduler import APScheduler
 
 from data import disease_map, details_map
 
-# Download Model File
 if not os.path.exists('model.h5'):
     print("Downloading model...")
     url = "https://drive.google.com/uc?id=1JNggWQ9OJFYnQpbsFXMrVu-E-sR3VnCu&confirm=t"
