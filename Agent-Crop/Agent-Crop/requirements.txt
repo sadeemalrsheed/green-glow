@@ -1,9 +1,0 @@
-Flask
-numpy
-pandas
-tensorflow-cpu
-werkzeug
-scipy
-pillow
-requests
-Flask-APScheduler
