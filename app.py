@@ -3,8 +3,8 @@ import shutil
 import time
 import numpy as np
 import pandas as pd
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
+from tensorflow.keras.models import load_model # type: ignore
 
 import requests
 from flask import Flask, render_template, request, redirect, flash, send_from_directory
