@@ -37,8 +37,6 @@ def predict(test_dir):
     
     test_gen = ImageDataGenerator(rescale=1./255)
 
-
-
     test_generator = test_gen.flow_from_dataframe(
         test_df, 
         test_dir, 
