@@ -46,8 +46,11 @@ def predict(test_dir):
         batch_size = 20,
         shuffle = False
     )
-    predict = model.predict(test_generator, steps = np.ceil(test_generator.samples/20))
-    test_df['Label'] = np.argmax(predict, axis = -1) # axis = -1 --> To compute the max element index within list of lists
+
+    # FIXED: Cast to int
+    predict = model.predict(test_generator, steps=int(np.ceil(test_generator.samples / 20)))
+
+    test_df['Label'] = np.argmax(predict, axis=-1)
     test_df['Label'] = test_df['Label'].replace(disease_map)
 
     prediction_dict = {}
@@ -59,6 +62,7 @@ def predict(test_dir):
         prediction_dict[image_name]['description'] = details_map[image_prediction][0]
         prediction_dict[image_name]['symptoms'] = details_map[image_prediction][1]
         prediction_dict[image_name]['source'] = details_map[image_prediction][2]
+    
     return prediction_dict
 
 
