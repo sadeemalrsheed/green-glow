@@ -2,13 +2,13 @@ import os
 import shutil
 import time
 import numpy as np
-import pandas as pd
+import pandas as pd 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
 
-import requests
-from flask import Flask, render_template, request, redirect, flash, send_from_directory
-from werkzeug.utils import secure_filename
+import requests 
+from flask import Flask, render_template, request, redirect, flash, send_from_directory 
+from werkzeug.utils import secure_filename 
 from flask_apscheduler import APScheduler
 
 from data import disease_map, details_map
@@ -175,3 +175,5 @@ def api_predict():
     except:
         return {"Error": "Something Went Wrong!"}
 
+if __name__ == '__main__':
+    app.run(debug=True)
