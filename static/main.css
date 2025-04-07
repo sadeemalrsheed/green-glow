@@ -17,6 +17,9 @@ a.nav-link:hover {
 .custom-bg-color-2 {
     background-color: #464646;
 }
+.custom-bg-color-3 {
+    background-color: #216b39;
+}
 body {
     color: white;
     background-color: #545454;
