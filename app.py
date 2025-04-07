@@ -39,31 +39,33 @@ def predict(test_dir):
     test_generator = test_gen.flow_from_dataframe(
         test_df, 
         test_dir, 
-        x_col = 'Image',
-        y_col = None,
-        class_mode = None,
-        target_size = (256, 256),
-        batch_size = 20,
-        shuffle = False
-    )
+        x_col='Image',
+        y_col=None,
+        class_mode=None,
+        target_size=(256, 256),
+        batch_size=20,
+        shuffle=False)
 
-    # FIXED: Cast to int
+    # FIX: Force steps to int
     predict = model.predict(test_generator, steps=int(np.ceil(test_generator.samples / 20)))
 
-    test_df['Label'] = np.argmax(predict, axis=-1)
+    # FIX: Convert predictions to int before indexing
+    test_df['Label'] = np.argmax(predict, axis=-1).astype(int)
     test_df['Label'] = test_df['Label'].replace(disease_map)
 
     prediction_dict = {}
     for value in test_df.to_dict('index').values():
         image_name = value['Image']
         image_prediction = value['Label']
-        prediction_dict[image_name] = {}
-        prediction_dict[image_name]['prediction'] = image_prediction
-        prediction_dict[image_name]['description'] = details_map[image_prediction][0]
-        prediction_dict[image_name]['symptoms'] = details_map[image_prediction][1]
-        prediction_dict[image_name]['source'] = details_map[image_prediction][2]
-    
+        prediction_dict[image_name] = {
+            'prediction': image_prediction,
+            'description': details_map[image_prediction][0],
+            'symptoms': details_map[image_prediction][1],
+            'source': details_map[image_prediction][2],
+        }
+
     return prediction_dict
+
 
 
 # Create an app
