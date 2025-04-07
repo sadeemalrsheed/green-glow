@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
+import datetime
 
 import requests 
 from flask import Flask, render_template, request, redirect, flash, send_from_directory 
@@ -114,13 +115,8 @@ def get_disease():
 
         files = request.files.getlist('hiddenfiles')
 
-        # Set up upload folder path
-        app.config['UPLOAD_FOLDER'] = "./static/test"
-        app.config['UPLOAD_FOLDER'] = app.config['UPLOAD_FOLDER'] + '/predict_' + str(folder_num).rjust(6, "0")
-
-        # Clear old folder if it exists
-        if os.path.exists(app.config['UPLOAD_FOLDER']):
-            shutil.rmtree(app.config['UPLOAD_FOLDER'])
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        app.config['UPLOAD_FOLDER'] = f"./static/test/predict_{folder_num:06d}_{timestamp}"
 
         # Create new folder
         os.makedirs(app.config['UPLOAD_FOLDER'])
