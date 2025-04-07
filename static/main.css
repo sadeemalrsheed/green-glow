@@ -2,7 +2,7 @@ html {
     scroll-behavior: smooth;
 }
 .nav-color {
-    background-color: #252525;
+    background-color: #216b39;
 }
 a.nav-link {
     opacity: 0.75 !important;
@@ -52,4 +52,8 @@ main > .container {
 
 .nav-tabs {
     --bs-nav-tabs-link-hover-border-color: #333333;
+}
+
+.brown-text {
+	color: #4e260d; 
 }
