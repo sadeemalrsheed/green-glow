@@ -35,7 +35,12 @@ def predict(test_dir):
     test_img = [f for f in os.listdir(os.path.join(test_dir)) if not f.startswith(".")]
     test_df = pd.DataFrame({'Image': test_img})
     
-    test_gen = ImageDataGenerator(rescale=1./255)
+    test_gen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    horizontal_flip=True,
+    brightness_range=(0.8, 1.2),)
+
 
     test_generator = test_gen.flow_from_dataframe(
         test_df, 
