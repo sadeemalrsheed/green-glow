@@ -125,13 +125,14 @@ def get_disease():
                 flash("Invalid file type! Only PNG, JPEG/JPG files are supported.")
                 return redirect('/')
         try:
-            if len(os.listdir(app.config['UPLOAD_FOLDER'])) > 0:
-                diseases = predict(app.config['UPLOAD_FOLDER'])
-                return render_template('show_prediction.html',
-                folder = app.config['UPLOAD_FOLDER'],
-                predictions = diseases)
-        except:
-            return redirect('/')
+         if len(os.listdir(app.config['UPLOAD_FOLDER'])) > 0:
+          diseases = predict(app.config['UPLOAD_FOLDER'])
+          print("Predictions:", diseases)  # NEW: log output
+          return render_template('show_prediction.html',folder=app.config['UPLOAD_FOLDER'],predictions=diseases)
+        except Exception as e:
+          print("Prediction Error:", e)  # NEW: log error
+          return redirect('/')
+
         
     return render_template('index.html')
 
