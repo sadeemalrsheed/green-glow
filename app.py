@@ -111,15 +111,23 @@ def get_disease():
         if 'hiddenfiles' not in request.files:
             flash('No files part!')
             return redirect(request.url)
-        # Create a new folder for every new file uploaded,
-        # so that concurrency can be maintained
+
         files = request.files.getlist('hiddenfiles')
+
+        # Set up upload folder path
         app.config['UPLOAD_FOLDER'] = "./static/test"
         app.config['UPLOAD_FOLDER'] = app.config['UPLOAD_FOLDER'] + '/predict_' + str(folder_num).rjust(6, "0")
-        if not os.path.exists(app.config['UPLOAD_FOLDER']):
-            os.makedirs(app.config['UPLOAD_FOLDER'])
-            folders_list.append(app.config['UPLOAD_FOLDER'])
-            folder_num += 1
+
+        # Clear old folder if it exists
+        if os.path.exists(app.config['UPLOAD_FOLDER']):
+            shutil.rmtree(app.config['UPLOAD_FOLDER'])
+
+        # Create new folder
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+        folders_list.append(app.config['UPLOAD_FOLDER'])
+        folder_num += 1
+
+        # Save files
         for file in files:
             if file.filename == '':
                 flash('No Files are Selected!')
@@ -130,16 +138,17 @@ def get_disease():
             else:
                 flash("Invalid file type! Only PNG, JPEG/JPG files are supported.")
                 return redirect('/')
-        try:
-         if len(os.listdir(app.config['UPLOAD_FOLDER'])) > 0:
-          diseases = predict(app.config['UPLOAD_FOLDER'])
-          print("Predictions:", diseases)  # NEW: log output
-          return render_template('show_prediction.html',folder=app.config['UPLOAD_FOLDER'],predictions=diseases)
-        except Exception as e:
-          print("Prediction Error:", e)  # NEW: log error
-          return redirect('/')
 
-        
+        try:
+            if len(os.listdir(app.config['UPLOAD_FOLDER'])) > 0:
+                diseases = predict(app.config['UPLOAD_FOLDER'])
+                print("Predictions:", diseases)
+                return render_template('show_prediction.html',
+                                       folder=app.config['UPLOAD_FOLDER'],
+                                       predictions=diseases)
+        except Exception as e:
+            print("Prediction Error:", e)
+            return redirect('/')
     return render_template('index.html')
 
 @app.route('/favicon.ico')
