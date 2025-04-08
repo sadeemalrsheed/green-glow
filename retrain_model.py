@@ -44,8 +44,8 @@ new_model.compile(optimizer=Adam(1e-4), loss='categorical_crossentropy', metrics
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
 train_gen = datagen.flow_from_directory(
-    'path_to_your_new_flowers_directory',  # Use the correct path here
-    target_size=(256, 256),  # Ensure this matches the model input size
+    'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/flowers',
+    target_size=(256, 256),
     batch_size=32,
     class_mode='categorical'
 )
