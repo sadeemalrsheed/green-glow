@@ -75,7 +75,8 @@ var resizeAndBlob = function() {
                     // Replace hidden file input every time this function gets called so it get updated to latest container
                     document.getElementById('hiddenfiles').files = container.files;
                     // Image preview code
-                    document.getElementById('image_preview').innerHTML += '<div class="card custom-bg-color card-custom-preview mx-2 mb-3"><img src="' + dataUrl + '" class="card-img-top" alt="Crop Image" style="padding-top: 12px; max-height:150px; object-fit: cover;"><div class="card-body"><p class="card-text"><strong>Filename:</strong> ' + image_name + '</p></div></div>';
+                    document.getElementById('image_preview').innerHTML += '<div class="card custom-bg-color card-custom-preview mx-2 mb-3">' +'<img src="' + dataUrl + '" class="card-img-top" alt="Crop Image" style="padding-top: 12px; max-height:150px; object-fit: cover;">' + '<div class="card-body" style="background-color: #216b39; color: white; text-align: center;">' +'<p class="card-text"><strong>Filename:</strong> ' + image_name + '</p>' + '</div></div>';
+
                 }
                 img.src = e.target.result;
             }
