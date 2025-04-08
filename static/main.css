@@ -15,10 +15,17 @@ a.nav-link:hover {
     background-color: #333333;
 }
 .custom-bg-color-2 {
-    background-color: #464646;
+    background-color: white;
 }
 .custom-bg-color-3 {
     background-color: #216b39;
+}
+
+.custom-bg-color-4 {
+    background-color: #8bb094;
+}
+.custom-bg-color-5 {
+    background-color: white;
 }
 body {
     color: white;
