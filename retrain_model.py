@@ -1,11 +1,11 @@
 import os
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
-from tensorflow.keras.models import load_model # type: ignore
-from tensorflow.keras.layers import Dense # type: ignore
-from tensorflow.keras.models import Model # type: ignore
-from tensorflow.keras.optimizers import Adam # type: ignore
+from tensorflow.keras.preprocessing.image import ImageDataGenerator  # type: ignore
+from tensorflow.keras.models import load_model  # type: ignore
+from tensorflow.keras.layers import Dense, Input  # type: ignore
+from tensorflow.keras.models import Model  # type: ignore
+from tensorflow.keras.optimizers import Adam  # type: ignore
 
 base_dir = 'new_flowers'  # Folder with lily, sunflower, french_rose
 model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/model.h5'
@@ -15,17 +15,30 @@ image_size = (224, 224)
 batch_size = 16
 epochs = 5
 
+# Load the old model
 old_model = load_model(model_path)
+
+# Freeze all layers of the old model
 for layer in old_model.layers:
     layer.trainable = False
 
-x = old_model.layers[-2].output
-x = Dense(256, activation='relu')(x)
-out = Dense(34, activation='softmax')(x)  # 31 original + 3 new
+# Define the input layer explicitly
+input_layer = Input(shape=(224, 224, 3))  # Ensure the input shape matches your model's expected input shape
 
-new_model = Model(inputs=old_model.input, outputs=out)
+# Pass the input through the old model to reuse its features
+x = old_model(input_layer)
+
+# Add new layers on top
+x = Dense(256, activation='relu')(x)
+out = Dense(34, activation='softmax')(x)  # 31 original + 3 new classes
+
+# Create the new model
+new_model = Model(inputs=input_layer, outputs=out)
+
+# Compile the new model
 new_model.compile(optimizer=Adam(1e-4), loss='categorical_crossentropy', metrics=['accuracy'])
 
+# Create the data generators for training and validation
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
 train_gen = datagen.flow_from_directory(
@@ -44,15 +57,18 @@ val_gen = datagen.flow_from_directory(
     subset='validation'
 )
 
+# Train the new model
 history = new_model.fit(
     train_gen,
     epochs=epochs,
     validation_data=val_gen
 )
 
+# Save the retrained model
 new_model.save(new_model_path)
 print("Model updated and saved to:", new_model_path)
 
+# Print the class mapping for the new disease_map
 print("\nAdd the following to your disease_map in data.py:")
 for i, label in enumerate(train_gen.class_indices):
     print(f"{i + 31}: '{label.replace('_', ' ').title()}'")
