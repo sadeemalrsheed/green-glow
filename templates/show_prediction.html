@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row mt-5 justify-content-center">
         {% for image, details in predictions.items() %}
-            <div class="card custom-bg-color card-custom mx-2 mb-3">
-                <img src="{{ folder+'/'+image }}" class="card-img-top mx-auto img-fluid" alt="Crop Image: {{ image }}" style="background-color: #8bb094; border: 1px solid #216b39; color: #545454;">
+            <div class="card custom-bg-color card-custom mx-2 mb-3" style="background-color: #8bb094; border: 1px solid #216b39; color: #545454;">
+                <img src="{{ folder+'/'+image }}" class="card-img-top mx-auto img-fluid" alt="Crop Image: {{ image }}" style="padding-top: 12px; max-height:250px; object-fit: cover;">
                 <div class="card-body">
                     <p class="card-text"><strong>Image filename:</strong><br>{{ image }}</p>
                     <p class="card-text"><strong>Predicted disease:</strong><br>{{ details["prediction"] }}</p>
