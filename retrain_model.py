@@ -8,8 +8,8 @@ from tensorflow.keras.models import Model # type: ignore
 from tensorflow.keras.optimizers import Adam # type: ignore
 
 base_dir = 'new_flowers'  # Folder with lily, sunflower, french_rose
-model_path = 'Green_Glow/model.h5'
-new_model_path = 'Green-Glow/model_updated.h5'
+model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/model.h5'
+new_model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/retrained_model.h5'
 
 image_size = (224, 224)
 batch_size = 16
