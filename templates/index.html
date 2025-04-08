@@ -19,8 +19,22 @@
 			<div class="col justify-content-center pt-4">
 				<h1 class="mb-3 custom-font brown-text">Get Instant & Accurate Crop Disease Detection with Green Glow</h1>
 				<div class="mb-0" style="max-width: 300px;">
-					<label for="files" class="form-label brown-text">Upload Your Images Here: </label>
-					<input class="form-control" type="file" name="files" id="files" multiple style="color: #216b39; background-color: #216b39; border: #216b39; padding: 10px;">
+					<style>
+						.custom-file-upload {
+						  background-color: #4CAF50; /* Green */
+						  color: white;
+						  padding: 10px 20px;
+						  border-radius: 6px;
+						  display: inline-block;
+						  cursor: pointer;
+						  font-weight: 500;
+						}
+						#files { display: none; /* Hide native input */}
+					  </style>
+					  
+					  <label for="files" class="custom-file-upload">Choose Files</label>
+					  <input type="file" id="files" name="files" multiple accept=".jpg, .jpeg, .png" required>
+
 				</div>
 				<form action = "/" method = "POST" enctype = "multipart/form-data">
 					<div>
