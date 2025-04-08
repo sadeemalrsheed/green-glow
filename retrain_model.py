@@ -7,7 +7,7 @@ from tensorflow.keras.layers import Dense, Input  # type: ignore
 from tensorflow.keras.models import Model  # type: ignore
 from tensorflow.keras.optimizers import Adam  # type: ignore
 
-base_dir = 'new_flowers'  # Folder with lily, sunflower, french_rose
+base_dir = 'flowers'  # Folder with lily, sunflower, french_rose
 model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/model.h5'
 new_model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/retrained_model.h5'
 
