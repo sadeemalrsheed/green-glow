@@ -11,7 +11,7 @@ base_dir = 'new_flowers'  # Folder with lily, sunflower, french_rose
 model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/model.h5'
 new_model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/retrained_model.h5'
 
-image_size = (224, 224)
+image_size = (256, 256)  # Resize images to 256x256
 batch_size = 16
 epochs = 5
 
@@ -43,7 +43,7 @@ datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
 train_gen = datagen.flow_from_directory(
     base_dir,
-    target_size=image_size,
+    target_size=image_size,  # Make sure this matches the model's expected input
     batch_size=batch_size,
     class_mode='categorical',
     subset='training'
@@ -51,11 +51,12 @@ train_gen = datagen.flow_from_directory(
 
 val_gen = datagen.flow_from_directory(
     base_dir,
-    target_size=image_size,
+    target_size=image_size,  # Make sure this matches the model's expected input
     batch_size=batch_size,
     class_mode='categorical',
     subset='validation'
 )
+
 
 # Train the new model
 history = new_model.fit(
