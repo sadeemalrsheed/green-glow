@@ -61,7 +61,7 @@ main > .container {
 }
 
 .nav-tabs {
-    --bs-nav-tabs-link-hover-border-color: #8bb094;
+    --bs-nav-tabs-link-hover-border-color: #333333;
 }
 
 .brown-text {
