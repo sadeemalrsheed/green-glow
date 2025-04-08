@@ -67,3 +67,12 @@ main > .container {
 .brown-text {
 	color: #4e260d; 
 }
+.green-tab-button {
+    background-color: #8bb094;
+	color: white;
+	border: none;
+}
+
+.green-tab-button.active {
+    background-color: #8bb094;
+}
