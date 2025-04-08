@@ -23,7 +23,9 @@ for layer in old_model.layers:
     layer.trainable = False
 
 # Define the input layer explicitly
-input_layer = Input(shape=(224, 224, 3))  # Ensure the input shape matches your model's expected input shape
+
+input_layer = Input(shape=(256, 256, 3))  # Ensure input shape matches the image size
+x = old_model(input_layer)
 
 # Pass the input through the old model to reuse its features
 x = old_model(input_layer)
