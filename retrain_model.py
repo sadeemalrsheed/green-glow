@@ -44,12 +44,12 @@ new_model.compile(optimizer=Adam(1e-4), loss='categorical_crossentropy', metrics
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
 train_gen = datagen.flow_from_directory(
-    base_dir,
-    target_size=image_size,  # Make sure this matches the model's expected input
-    batch_size=batch_size,
-    class_mode='categorical',
-    subset='training'
+    'path_to_your_new_flowers_directory',  # Use the correct path here
+    target_size=(256, 256),  # Ensure this matches the model input size
+    batch_size=32,
+    class_mode='categorical'
 )
+
 
 val_gen = datagen.flow_from_directory(
     base_dir,
