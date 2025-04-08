@@ -50,8 +50,8 @@ main > .container {
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #545454;
-    border-color: #333333;
+    background-color: #8bb094; /*545454*/
+    border-color: #216b39; /*333333*/
     color: #fff;
 }
 .nav-link:hover {
@@ -67,12 +67,4 @@ main > .container {
 .brown-text {
 	color: #4e260d; 
 }
-.green-tab-button {
-    background-color: #8bb094;
-	color: white;
-	border: none;
-}
 
-.green-tab-button.active {
-    background-color: #8bb094;
-}
