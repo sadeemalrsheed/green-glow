@@ -48,27 +48,27 @@ disease_map = {
 
 
 details_map = {
-    'Apple: Apple Scab': [
+    'apple_apple_scab': [
         'A serious disease of apples and ornamental crabapples, apple scab (Venturia inaequalis) attacks both leaves and fruit. The fungal disease forms pale yellow or olive-green spots on the upper surface of leaves. Dark, velvety spots may appear on the lower surface. Severely infected leaves become twisted and puckered and may drop early in the summer.',
         'Symptoms on fruit are similar to those found on leaves. Scabby spots are sunken and tan and may have velvety spores in the center. As these spots mature, they become larger and turn brown and corky. Infected fruit becomes distorted and may crack allowing entry of secondary organisms. Severely affected fruit may drop, especially when young.',
         'https://www.planetnatural.com/pest-problem-solver/plant-disease/apple-scab'],
-    'Apple: Black Rot': [
+    'apple_black_rot': [
         'Black rot is occasionally a problem on Minnesota apple trees. This fungal disease causes leaf spot, fruit rot and cankers on branches. Trees are more likely to be infected if they are: Not fully hardy in Minnesota, Infected with fire blight or Stressed by environmental factors like drought.',
         'Large brown rotten areas can form anywhere on the fruit but are most common on the blossom end. Brown to black concentric rings can often be seen on larger infections. The flesh of the apple is brown but remains firm. Infected leaves develop "frog-eye leaf spot". These are circular spots with purplish or reddish edges and light tan interiors.',
         'https://extension.umn.edu/plant-diseases/black-rot-apple'],
-    'Apple: Cedar Rust': [
+    'apple_cedar_rust': [
         'Cedar apple rust (Gymnosporangium juniperi-virginianae) is a fungal disease that requires juniper plants to complete its complicated two year life-cycle. Spores overwinter as a reddish-brown gall on young twigs of various juniper species. In early spring, during wet weather, these galls swell and bright orange masses of spores are blown by the wind where they infect susceptible apple and crab-apple trees. The spores that develop on these trees will only infect junipers the following year. From year to year, the disease must pass from junipers to apples to junipers again; it cannot spread between apple trees.',
         'On apple and crab-apple trees, look for pale yellow pinhead sized spots on the upper surface of the leaves shortly after bloom. These gradually enlarge to bright orange-yellow spots which make the disease easy to identify. Orange spots may develop on the fruit as well. Heavily infected leaves may drop prematurely.',
         'https://www.planetnatural.com/pest-problem-solver/plant-disease/cedar-apple-rust'],
-    'Apple: Healthy': [
+    'apple_healthy': [
         'Your crops are healthy. You took good care of it.',
         'Healthy Crops',
         'Just take care of it as you usually do.'],
-    'Blueberry: Healthy': [
+    'blueberry_healthy': [
         'Your crops are healthy. You took good care of it.',
         'Healthy Crops',
         'Just take care of it as you usually do.'],
-    'Cherry: Powdery Mildew': [
+    'cherry_powdery_mildew': [
         'Powdery mildew of sweet and sour cherry is caused by Podosphaera clandestina, an obligate biotrophic fungus. Mid- and late-season sweet cherry (Prunus avium) cultivars are commonly affected, rendering them unmarketable due to the covering of white fungal growth on the cherry surface. Season long disease control of both leaves and fruit is critical to minimize overall disease pressure in the orchard and consequently to protect developing fruit from accumulating spores on their surfaces.',
         'Initial symptoms, often occurring 7 to 10 days after the onset of the first irrigation, are light roughly-circular, powdery looking patches on young, susceptible leaves (newly unfolded, and light green expanding leaves). Older leaves develop an age-related (ontogenic) resistance to powdery mildew and are naturally more resistant to infection than younger leaves. Look for early leaf infections on root suckers, the interior of the canopy or the crotch of the tree where humidity is high.',
         'http://treefruit.wsu.edu/crop-protection/disease-management/cherry-powdery-mildew'],
