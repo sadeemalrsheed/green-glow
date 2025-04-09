@@ -7,7 +7,7 @@ from tensorflow.keras.layers import Dense, Input  # type: ignore
 from tensorflow.keras.models import Model  # type: ignore
 from tensorflow.keras.optimizers import Adam  # type: ignore
 
-base_dir = 'flowers'  # Folder with lily, sunflower, french_rose
+base_dir = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/dataset'  # Folder with lily, sunflower, french_rose
 model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/model.h5'
 new_model_path = 'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/retrained_model.h5'
 
@@ -31,8 +31,9 @@ x = old_model(input_layer)
 x = old_model(input_layer)
 
 # Add new layers on top
-x = Dense(256, activation='relu')(x)
-out = Dense(34, activation='softmax')(x)  # 31 original + 3 new classes
+num_classes = len(os.listdir(base_dir))  # Count folders = number of classes
+out = Dense(num_classes, activation='softmax')(x)
+  # 31 original + 3 new classes
 
 # Create the new model
 new_model = Model(inputs=input_layer, outputs=out)
@@ -44,16 +45,16 @@ new_model.compile(optimizer=Adam(1e-4), loss='categorical_crossentropy', metrics
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
 train_gen = datagen.flow_from_directory(
-    'C:/Users/sdeem/OneDrive/Documents/GitHub/green-glow/flowers',
+    base_dir,
     target_size=(256, 256),
     batch_size=32,
-    class_mode='categorical'
+    class_mode='categorical',
+    subset='training'
 )
-
 
 val_gen = datagen.flow_from_directory(
     base_dir,
-    target_size=image_size,  # Make sure this matches the model's expected input
+    target_size=image_size,
     batch_size=batch_size,
     class_mode='categorical',
     subset='validation'
@@ -73,5 +74,5 @@ print("Model updated and saved to:", new_model_path)
 
 # Print the class mapping for the new disease_map
 print("\nAdd the following to your disease_map in data.py:")
-for i, label in enumerate(train_gen.class_indices):
-    print(f"{i + 31}: '{label.replace('_', ' ').title()}'")
+for label, index in train_gen.class_indices.items():
+    print(f"{index}: '{label.replace('_', ' ').title()}'")
