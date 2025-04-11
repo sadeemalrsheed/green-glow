@@ -41,9 +41,6 @@ disease_map = {
     39: 'tomato_yellow_leaf_curl_virus',
     40: 'tomato_mosaic_virus',
     41: 'tomato_healthy',
-    42: 'flower_lily',
-    43: 'flower_sunflower',
-    44: 'flower_french_rose'
 }
 
 
