@@ -104,10 +104,6 @@ scheduler.start()
 def home():
     return render_template('index.html')
 
-@app.route('/plants')
-def show_plants():
-    return render_template('plants.html')
-
 
 @app.route('/condition', methods=['GET', 'POST'])
 
@@ -155,6 +151,10 @@ def get_disease():
             print("Prediction Error:", e)
             return redirect('/')
     return render_template('condition.html')
+
+@app.route('/plants')
+def show_plants():
+    return render_template('plants.html')
 
 @app.route('/favicon.ico')
 
