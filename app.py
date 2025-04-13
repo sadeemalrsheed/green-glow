@@ -104,6 +104,11 @@ scheduler.start()
 def home():
     return render_template('index.html')
 
+@app.route('/plants')
+def plants():
+    return render_template('plants.html')
+
+
 @app.route('/condition', methods=['GET', 'POST'])
 
 def get_disease():
