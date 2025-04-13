@@ -149,7 +149,7 @@ def get_disease():
         except Exception as e:
             print("Prediction Error:", e)
             return redirect('/')
-    return render_template('index.html')
+    return render_template('condition.html')
 
 @app.route('/favicon.ico')
 
