@@ -105,7 +105,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/plants')
-def plants():
+def show_plants():
     return render_template('plants.html')
 
 
