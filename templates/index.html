@@ -20,10 +20,8 @@
     </header>
   </section>
 
-  <!-- Logo -->
-  <section class="mb-8">
-    <img src="logo.png" alt="Project Logo" class="mx-auto w-32 h-32 rounded-full shadow-md" />
-  </section>
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Project Logo" class="mx-auto w-32 h-32 rounded-full shadow-md" />
+
 
   <!-- Boxes -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto mb-20">
