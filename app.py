@@ -156,6 +156,71 @@ def get_disease():
 def show_plants():
     return render_template('plants.html')
 
+# Central Region
+@app.route('/nerium')
+def nerium():
+    return render_template('nerium.html')
+
+@app.route('/ziziphus')
+def ziziphus():
+    return render_template('ziziphus.html')
+
+@app.route('/acacia')
+def acacia():
+    return render_template('Acacia.html')
+
+# Western Region
+@app.route('/bougainvillea')
+def bougainvillea():
+    return render_template('Bougainvillea.html')
+
+@app.route('/citrus')
+def citrus():
+    return render_template('Citrus.html')
+
+@app.route('/ficus-benjamina')
+def ficus_benjamina():
+    return render_template('Ficus Benjamina.html')
+
+# Eastern Region
+@app.route('/date-palm')
+def date_palm():
+    return render_template('Date Palm.html')
+
+@app.route('/jojoba')
+def jojoba():
+    return render_template('Jojoba.html')
+
+@app.route('/acacia-rigidula')
+def acacia_rigidula():
+    return render_template('Acacia Rigidula.html')
+
+# Northern Region
+@app.route('/lavender')
+def lavender():
+    return render_template('Lavender.html')
+
+@app.route('/rosemary')
+def rosemary():
+    return render_template('Rosemary.html')
+
+@app.route('/thyme')
+def thyme():
+    return render_template('Thyme.html')
+
+# Southern Region
+@app.route('/sage')
+def sage():
+    return render_template('Sage.html')
+
+@app.route('/oregano')
+def oregano():
+    return render_template('Oregano.html')
+
+@app.route('/basil')
+def basil():
+    return render_template('Basil.html')
+
 @app.route('/favicon.ico')
 
 def favicon(): 
