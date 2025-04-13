@@ -100,7 +100,11 @@ def clean():
 
 scheduler.start()
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/condition', methods=['GET', 'POST'])
 
 def get_disease():
     global folder_num

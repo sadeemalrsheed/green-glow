@@ -1,56 +1,73 @@
-{% extends 'base.html' %}
-{% block title %} Green Glow: Get Instant & Accurate Crop Disease Detection {% endblock %}
-{% block content %}
-	{% with messages = get_flashed_messages() %}  
-		{% if messages %}  
-			{% for message in messages %}
-				<div class="alert alert-warning text-center" role="alert" style="padding-top: 64px;">
-					<p class="mb-0 mt-3">{{ message }}</p>
-				</div>
-			{% endfor %}  
-		{% endif %}  
-	{% endwith %}
-	<div class="alert alert-warning text-center" role="alert" id="alert"></div>
-	<div class="container px-4 px-md-3">
-		<div class="row align-items-lg-center align-items-md-center">
-			<div class="col-9 mx-auto col-md-6 order-md-4 col-lg-5">
-				<img src="{{ url_for('static', filename='Agent-Crop-1000x1000.png') }}" alt="Agent Crop Logo" height="500" width="500" class="img-fluid">
-			</div>
-			<div class="col justify-content-center pt-4">
-				<h1 class="mb-3 custom-font brown-text">Get Instant & Accurate Crop Disease Detection with Green Glow</h1>
-				<div class="mb-0" style="max-width: 300px;">
-					<style>
-						.custom-file-upload {
-						  background-color: #216b39; /* Green */
-						  color: white;
-						  padding: 10px 20px;
-						  border-radius: 6px;
-						  display: inline-block;
-						  cursor: pointer;
-						  font-weight: 500;
-						}
-						#files { display: none; /* Hide native input */}
-					  </style>
-					  
-					  <label for="files" class="custom-file-upload">Choose Files</label>
-					  <input type="file" id="files" name="files" multiple accept=".jpg, .jpeg, .png" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Glow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-green-50 text-gray-800">
 
-				</div>
-				<form action = "/" method = "POST" enctype = "multipart/form-data">
-					<div>
-						<input type="file" name="hiddenfiles" id="hiddenfiles" multiple hidden>
-						<div class="brown-text">
-							<p>Note: Maximumm Total file size limit is 50 MB. Only PNG, JPG/JPEG files are allowed.</p>
-							<p><a href="#crops-list" style="color: #216b39;">List of currently supported crops</a></p>
-						</div>
-					</div>
-					<div>
-						<button class="btn btn-lg" style="background-color: #216b39; color: white;" type="submit" id="submit" onclick="return submit_form();">Predict Now</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div id="image_preview" class="row mt-3 justify-content-center"></div>
-	</div>
-	<script src="{{ url_for('static', filename='main.js') }}" defer></script>
-{% endblock %} 
+  <!-- Header -->
+  <section>
+    <header class="text-center py-12">
+      <h1 class="text-4xl font-bold text-green-700">Welcome to Green Glow</h1>
+    </header>
+  </section>
+
+  <!-- Logo -->
+  <section class="mb-8">
+    <img src="logo.png" alt="Project Logo" class="mx-auto w-32 h-32 rounded-full shadow-md" />
+  </section>
+
+  <!-- Boxes -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto mb-20">
+
+    <!-- Box 1 -->
+    <a href="https://example1.com" target="_blank"
+       class="bg-white shadow-lg rounded-3xl p-8 text-center hover:bg-green-100 transition duration-300 ease-in-out">
+      <h2 class="text-2xl font-semibold text-green-700 mb-3">
+        <i>Check your device's status</i>
+      </h2>
+      <p class="text-sm text-gray-500">(Click here)</p>
+    </a>
+
+    <a href="{{ url_for('get_disease') }}" class="bg-white shadow-lg rounded-3xl p-8 text-center hover:bg-green-100 transition duration-300 ease-in-out">
+      <h2 class="text-2xl font-semibold text-green-700 mb-3">
+        <i>Plant condition overview</i>
+      </h2>
+      <p class="text-sm text-gray-500">(Click here)</p>
+    </a>
+    
+
+<!-- Box 3 -->
+<a href="plants.html"
+   class="bg-white shadow-lg rounded-3xl p-8 text-center hover:bg-green-100 transition duration-300 ease-in-out">
+  <h2 class="text-2xl font-semibold text-green-700 mb-3">
+    <i>Find suitable plants for your environment</i>
+  </h2>
+  <p>( click here )</p>
+</a>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner py-12 px-6 text-center">
+    <h3 class="text-2xl font-bold text-green-700 mb-6">Contact Us</h3>
+
+    <p class="text-gray-700 mb-2">
+      Email: <a href="mailto:greenglow@gmail.com" class="text-green-600 hover:underline">
+        greenglow@gmail.com
+      </a>
+    </p>
+
+    <p class="text-gray-700">
+      Phone: 0558165619
+    </p>
+  </footer>
+
+</body>
+</html>
