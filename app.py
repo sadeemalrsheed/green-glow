@@ -14,6 +14,10 @@ from flask_apscheduler import APScheduler
 
 from data import disease_map, details_map
 
+import serial
+arduino = serial.Serial('COM3', 9600)  # change 'COM3' if needed
+
+
 if not os.path.exists('model.h5'):
     print("Downloading model...")
     url = "https://drive.google.com/uc?id=1JNggWQ9OJFYnQpbsFXMrVu-E-sR3VnCu&confirm=t"
@@ -220,6 +224,18 @@ def oregano():
 @app.route('/basil')
 def basil():
     return render_template('Basil.html')
+
+@app.route('/device')
+def device_status():
+    arduino.write(b'READ\n')
+    data = arduino.readline().decode().strip()
+    return render_template('device.html', moisture=data)
+
+@app.route('/water', methods=['POST'])
+def water():
+    arduino.write(b'WATER\n')
+    return ('', 204)
+
 
 @app.route('/favicon.ico')
 
